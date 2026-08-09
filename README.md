@@ -4,21 +4,24 @@ A local two-player battle game that runs entirely in a web browser. Play offline
 
 ## How to Download and Play
 
-1. **Download from GitHub:**
-   - Click the green "Code" button on the repository page
-   - Select "Download ZIP"
-   - Extract the ZIP file to a folder on your computer
+**Option A — Play on GitHub Pages (recommended if your school blocks opening local files):**
+1. Open this repo on GitHub and go to **Settings → Pages**.
+2. Under **Branch**, set **Source** to *Deploy from a branch*, choose `main` / root folder, then **Save**.
+3. Wait ~1 minute for the build. The game is then live at:
+   `https://<your-username>.github.io/<repo-name>/`
+4. Bookmark that URL. It hosts the exact files in this repo — nothing extra is uploaded, and it works even when double-clicking `index.html` on a school Chromebook is blocked. (A `.nojekyll` file is already included so GitHub serves the files exactly as they are.)
+5. If a school network *also* blocks GitHub Pages, use Option B below.
 
-2. **Launch the game:**
-   - Open the extracted folder
-   - Double-click `index.html` to open in your web browser
-   - The game works best in Chrome/Chromium (Chromebook ready)
+**Option B — Play offline from a downloaded copy (no internet needed):**
+1. Click the green **Code** button on the repository page, then **Download ZIP**.
+2. Extract the ZIP into a folder on the Chromebook.
+3. Double-click `index.html` to open it in Chrome — no server, no install, no internet required after download.
 
-3. **Play a match:**
-   - From the main menu press **Play**.
-   - Player 1 picks a champion on the left, Player 2 picks one on the right.
-   - Choose an arena from the strip below, then press **Start Match**.
-   - Fight on the same keyboard until someone reaches zero health or the timer runs out.
+**Play a match:**
+- From the main menu press **Play**.
+- Player 1 picks a champion on the left, Player 2 picks one on the right.
+- Choose an arena from the strip below, then press **Start Match**.
+- Fight on the same keyboard until someone reaches zero health or the timer runs out.
 
 ## Controls
 
@@ -44,6 +47,7 @@ A local two-player battle game that runs entirely in a web browser. Play offline
 
 ## Features
 
+- **GitHub Pages ready** - All asset paths are relative, so the game serves correctly from `https://<user>.github.io/<repo>/`. A `.nojekyll` file is included so no Jekyll processing happens.
 - **8 Unique Characters** - Each with distinct stats, abilities, and visual style
 - **12 Battle Maps** - Each with unique terrain, obstacles, and hazards
 - **Best-of Rounds** - Choose 1, 3, 5 round matches or endless mode
