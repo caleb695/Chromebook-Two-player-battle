@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Battle Arena — Two Player Combat</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    html, body { height: 100%; }
+  </style>
+</head>
+<body>
+  <!-- ============================ MAIN MENU ============================ -->
+  <div id="screen-menu" class="screen active">
+    <div class="menu-box">
+      <h1 class="game-title">BATTLE ARENA</h1>
+      <p class="subtitle">A local two-player battle game</p>
+
+      <div id="menu-buttons" class="menu-buttons">
+        <button class="menu-btn primary" data-screen="charsel">Play</button>
+        <button class="menu-btn" data-screen="charsel-short">Character Select</button>
+        <button class="menu-btn" data-screen="mapselect">Map Select</button>
+        <button class="menu-btn" data-screen="settings">Settings</button>
+        <button class="menu-btn" data-screen="controls">Controls</button>
+        <button class="menu-btn" data-screen="credits">Credits</button>
+      </div>
+
+      <div class="menu-footer">
+        <span id="credit-counter">Credits: 0</span>
+        <span id="stats-line"></span>
+      </div>
+      <p class="hint">Best played in Chrome on a Chromebook · Works fully offline</p>
+    </div>
+  </div>
+
+  <!-- ========================== CHARACTER SELECT ========================== -->
+  <div id="screen-charsel" class="screen">
+    <div class="sel-header">
+      <h2>Choose Your Champions</h2>
+      <p class="sel-sub">Player 1 picks from the left, Player 2 from the right.</p>
+      <button class="menu-btn mini" data-screen="menu">Back</button>
+    </div>
+    <div class="sel-body">
+      <div class="char-col" id="p1-char-col">
+        <h3 class="player-tag tag-p1">PLAYER 1</h3>
+        <div class="char-picker" data-player="1"></div>
+      </div>
+      <div class="vs-divider">VS</div>
+      <div class="char-col" id="p2-char-col">
+        <h3 class="player-tag tag-p2">PLAYER 2</h3>
+        <div class="char-picker" data-player="2"></div>
+      </div>
+    </div>
+    <div class="sel-footer">
+      <div class="map-strip" id="map-strip"><span class="ms-label">Arena:</span></div>
+      <div class="char-detail" id="char-detail"></div>
+      <button class="menu-btn primary" id="charsel-go">Start Match</button>
+    </div>
+  </div>
+
+  <!-- ============================= MAP SELECT ============================= -->
+  <div id="screen-mapselect" class="screen">
+    <div class="sel-header">
+      <h2>Select Arena</h2>
+      <button class="menu-btn mini" data-screen="menu">Back</button>
+    </div>
+    <div id="map-grid" class="map-grid"></div>
+    <div class="sel-footer">
+      <div class="map-detail" id="map-detail"></div>
+    </div>
+  </div>
+
+  <!-- ============================== SETTINGS ============================== -->
+  <div id="screen-settings" class="screen">
+    <div class="setting-panel">
+      <h2>Settings</h2>
+      <div class="setting-row"><label>Master Volume</label><input type="range" id="set-volume" min="0" max="100" /></div>
+      <div class="setting-row"><label>Effects (particles / flashes)</label><input type="checkbox" id="set-effects" /></div>
+      <div class="setting-row"><label>Round Length (seconds)</label><input type="range" id="set-roundlen" min="30" max="180" step="10" /></div>
+      <div class="setting-row"><label>Rounds to Win (1 / 3 / 5 / Endless)</label>
+        <div class="seg" id="set-rounds-seg">
+          <button data-r="1">1</button><button data-r="3" class="active">3</button>
+          <button data-r="5">5</button><button data-r="99">Endless</button>
+        </div>
+      </div>
+      <div class="setting-row"><button id="set-fullscreen" class="menu-btn mini">Toggle Fullscreen</button></div>
+      <div class="setting-row"><button class="menu-btn mini" data-screen="menu">Back</button></div>
+    </div>
+  </div>
+
+  <!-- ============================== CONTROLS ============================== -->
+  <div id="screen-controls" class="screen">
+    <div class="control-panel">
+      <h2>Controls</h2>
+      <div class="ctrl-grid">
+        <div class="ctrl-col">
+          <h3 class="player-tag tag-p1">PLAYER 1</h3>
+          <table class="ctrl-table">
+            <tr><td>Move Up</td><td><kbd>W</kbd></td></tr>
+            <tr><td>Move Left</td><td><kbd>A</kbd></td></tr>
+            <tr><td>Crouch / Block</td><td><kbd>S</kbd></td></tr>
+            <tr><td>Move Right</td><td><kbd>D</kbd></td></tr>
+            <tr><td>Attack</td><td><kbd>Space</kbd></td></tr>
+            <tr><td>Special Ability</td><td><kbd>Q</kbd></td></tr>
+          </table>
+        </div>
+        <div class="ctrl-col">
+          <h3 class="player-tag tag-p2">PLAYER 2</h3>
+          <table class="ctrl-table">
+            <tr><td>Move Up</td><td><kbd>↑</kbd></td></tr>
+            <tr><td>Move Left</td><td><kbd>←</kbd></td></tr>
+            <tr><td>Crouch / Block</td><td><kbd>↓</kbd></td></tr>
+            <tr><td>Move Right</td><td><kbd>→</kbd></td></tr>
+            <tr><td>Attack</td><td><kbd>Enter</kbd></td></tr>
+            <tr><td>Special Ability</td><td><kbd>Shift</kbd></td></tr>
+          </table>
+        </div>
+      </div>
+      <p class="hint">Press <kbd>Esc</kbd> or <kbd>P</kbd> during a match to pause.</p>
+      <button class="menu-btn mini" data-screen="menu">Back</button>
+    </div>
+  </div>
+
+  <!-- ============================== CREDITS ============================== -->
+  <div id="screen-credits" class="screen">
+    <div class="control-panel">
+      <h2>Credits</h2>
+      <p class="credit-text">
+        Made as a pure HTML / CSS / JavaScript project.<br />
+        No external libraries, no server, no internet needed.<br /><br />
+        Procedural audio generated with the Web Audio API.<br />
+        All characters and maps drawn live on a canvas.<br /><br />
+        Battle Arena &copy; <span id="year"></span>
+      </p>
+      <button class="menu-btn mini" data-screen="menu">Back</button>
+    </div>
+  </div>
+
+  <!-- ================================ GAME ================================ -->
+  <div id="screen-game" class="screen">
+    <div id="game-hud" class="hud">
+      <div class="hud-player" id="hud-p1">
+        <span class="hud-name" id="hud-p1-name">P1</span>
+        <div class="bar-wrap"><div class="hp-bar" id="hud-p1-hp"></div></div>
+        <span class="hud-special" id="hud-p1-special">READY</span>
+      </div>
+      <div class="hud-center">
+        <div id="hud-round">ROUND 1</div>
+        <div id="hud-score">0 - 0</div>
+        <div id="hud-timer">99</div>
+      </div>
+      <div class="hud-player right" id="hud-p2">
+        <span class="hud-special" id="hud-p2-special">READY</span>
+        <div class="bar-wrap"><div class="hp-bar flip" id="hud-p2-hp"></div></div>
+        <span class="hud-name" id="hud-p2-name">P2</span>
+      </div>
+    </div>
+    <canvas id="game-canvas"></canvas>
+    <div id="round-banner" class="round-banner hidden"></div>
+    <div id="pause-overlay" class="overlay hidden">
+      <div class="overlay-box">
+        <h2>Paused</h2>
+        <button class="menu-btn" id="resume-btn">Resume</button>
+        <button class="menu-btn" id="quit-btn">Quit to Menu</button>
+      </div>
+    </div>
+    <div id="victory-overlay" class="overlay hidden">
+      <div class="overlay-box">
+        <h2 id="victory-title">Victory!</h2>
+        <p id="victory-detail"></p>
+        <button class="menu-btn primary" id="rematch-btn">Rematch</button>
+        <button class="menu-btn" id="menu-again-btn">Main Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts (loaded in dependency order) -->
+  <script src="js/characters.js"></script>
+  <script src="js/maps.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -12,7 +12,13 @@ A local two-player battle game that runs entirely in a web browser. Play offline
 2. **Launch the game:**
    - Open the extracted folder
    - Double-click `index.html` to open in your web browser
-   - The game works best in Chrome/Chromium browsers
+   - The game works best in Chrome/Chromium (Chromebook ready)
+
+3. **Play a match:**
+   - From the main menu press **Play**.
+   - Player 1 picks a champion on the left, Player 2 picks one on the right.
+   - Choose an arena from the strip below, then press **Start Match**.
+   - Fight on the same keyboard until someone reaches zero health or the timer runs out.
 
 ## Controls
 
@@ -93,7 +99,7 @@ Earn credits by winning matches:
 - Win a match: +25 credits bonus
 - Complete a match: Tracked in statistics
 
-Spend 100 credits on Mystery Boxes to unlock extra characters and skins.
+Spend 100 credits in **Character Select** on a locked character (Paladin or Shadow) to unlock them. Progress is saved locally on the device.
 
 ## License
 
